@@ -23,7 +23,7 @@ public class StreamBenchmark {
     }
 
     @Benchmark
-    public List<Double> vanilla() {
+    public List<Double> forEachTest() {
         List<Double> result = new ArrayList<>(sourceList.size() / 2 + 1);
         for(Integer i : sourceList) {
             if(i % 2 == 0) {
@@ -34,18 +34,10 @@ public class StreamBenchmark {
     }
 
     @Benchmark
-    public List<Double> stream() {
+    public List<Double> lambdaStreamsTest() {
         return sourceList.stream()
                 .filter(i -> i % 2 == 0)
                 .map(Math::sqrt)
                 .collect(Collectors.toCollection(() -> new ArrayList<>(sourceList.size() / 2 + 1)));
-    }
-
-    @Benchmark
-    public List<Double> fastStream() {
-        return FastStream.of(sourceList)
-                .filter(i -> i % 2 == 0)
-                .map(Math::sqrt)
-                .collect(new ArrayList<>(sourceList.size() / 2 + 1));
     }
 }

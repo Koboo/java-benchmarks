@@ -18,7 +18,7 @@ public class SupplierInstanceBenchmark {
     public static final Supplier<TestDao> supplier = TestDao::new;
 
     @Benchmark
-    public List<TestDao> createInstance() {
+    public List<TestDao> createInstanceByClass() {
         List<TestDao> list = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             try {
@@ -31,7 +31,7 @@ public class SupplierInstanceBenchmark {
     }
 
     @Benchmark
-    public List<TestDao> createSupplier() {
+    public List<TestDao> createInstanceBySupplier() {
         List<TestDao> list = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             list.add(supplier.get());

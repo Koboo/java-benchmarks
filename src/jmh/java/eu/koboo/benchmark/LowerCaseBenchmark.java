@@ -18,12 +18,12 @@ public class LowerCaseBenchmark {
     public static final String name = "KobooGotFunWithJavaBenchmarks";
 
     @Benchmark
-    public String without() {
+    public String withoutLocale() {
         return name.toLowerCase();
     }
 
     @Benchmark
-    public String with() {
+    public String withLocale() {
         return name.toLowerCase(Locale.ROOT);
     }
 
